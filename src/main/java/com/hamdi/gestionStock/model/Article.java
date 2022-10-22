@@ -1,5 +1,6 @@
 package com.hamdi.gestionStock.model;
 
+import com.hamdi.gestionStock.dto.CategoryDto;
 import lombok.*;
 
 import javax.persistence.*;

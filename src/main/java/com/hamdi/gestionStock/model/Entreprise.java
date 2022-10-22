@@ -31,6 +31,4 @@ public class Entreprise extends AbstractEntity{
     private String siteWeb;
     @OneToMany(mappedBy = "entreprise")
     private List<User> users;
-
-
 }
