@@ -1,16 +1,13 @@
 package com.hamdi.gestionStock.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
+@Builder
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -18,4 +15,22 @@ import javax.persistence.Table;
 public class Entreprise extends AbstractEntity{
     @Column(name = "name")
     private String name;
+    @Column(name = "description")
+    private String description;
+    @Embedded
+    private Adresse adresse;
+    @Column(name = "codefiscal")
+    private String codeFiscal;
+    @Column(name = "photo")
+    private String photo;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "numtel")
+    private String numTel;
+    @Column(name = "siteweb")
+    private String siteWeb;
+    @OneToMany(mappedBy = "entreprise")
+    private List<User> users;
+
+
 }

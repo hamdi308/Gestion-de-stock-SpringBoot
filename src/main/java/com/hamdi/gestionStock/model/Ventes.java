@@ -1,15 +1,14 @@
 package com.hamdi.gestionStock.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.time.Instant;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -17,5 +16,10 @@ import javax.persistence.Table;
 @Table(name="Ventes")
 public class Ventes extends AbstractEntity{
 
+    @Column(name="code")
     private String code;
+    @Column(name="datevente")
+    private Instant dateVente;
+    @Column(name="commentaire")
+    private String commentaire;
 }

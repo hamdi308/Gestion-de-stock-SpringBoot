@@ -1,23 +1,24 @@
 package com.hamdi.gestionStock.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import lombok.*;
+import javax.persistence.*;
+import java.time.Instant;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name="MovementsStock")
 public class MvtStk extends AbstractEntity{
+    @Column(name="datemvt")
+    private Instant dateMvt;
+    @Column(name="quantite")
+    private Instant quantite;
     @ManyToOne
     @JoinColumn(name="idarticle")
     private Article article;
+    @Column(name = "typemvt")
+    private TypeMvtStk typeMvt;
 }

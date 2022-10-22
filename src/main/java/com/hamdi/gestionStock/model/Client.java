@@ -1,19 +1,17 @@
 package com.hamdi.gestionStock.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
+@Builder
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name="Clents")
+@Table(name="clients")
 public class Client extends AbstractEntity{
     @Column(name="name")
     private String name;
@@ -28,5 +26,5 @@ public class Client extends AbstractEntity{
     @Column(name="numTel")
     private String numTel;
     @OneToMany(mappedBy = "client")
-    private List<CommandeClient> commandeClients;
+    private List<CommandeClient> commandeClientList;
 }

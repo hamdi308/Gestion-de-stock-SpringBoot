@@ -1,15 +1,12 @@
 package com.hamdi.gestionStock.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 import javax.persistence.*;
 import java.util.*;
 
 @Data
 @NoArgsConstructor
+@Builder
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity
