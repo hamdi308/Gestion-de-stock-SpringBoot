@@ -6,7 +6,6 @@ import java.util.*;
 
 @Data
 @NoArgsConstructor
-@Builder
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity

@@ -7,7 +7,6 @@ import java.time.Instant;
 import java.util.*;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)

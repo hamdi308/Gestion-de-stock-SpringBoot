@@ -7,7 +7,6 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@Builder
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity

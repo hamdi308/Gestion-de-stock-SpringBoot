@@ -2,12 +2,12 @@ package com.hamdi.gestionStock.model;
 
 import lombok.*;
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.Instant;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name="MovementsStock")
@@ -15,7 +15,7 @@ public class MvtStk extends AbstractEntity{
     @Column(name="datemvt")
     private Instant dateMvt;
     @Column(name="quantite")
-    private Instant quantite;
+    private BigDecimal quantite;
     @ManyToOne
     @JoinColumn(name="idarticle")
     private Article article;
