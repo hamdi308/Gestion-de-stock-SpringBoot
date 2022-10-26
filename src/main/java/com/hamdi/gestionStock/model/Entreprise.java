@@ -26,6 +26,8 @@ public class Entreprise extends AbstractEntity{
     private String email;
     @Column(name = "numtel")
     private String numTel;
+    @Column(name = "idEntreprise")
+    private Integer idEntreprise;
     @Column(name = "siteweb")
     private String siteWeb;
     @OneToMany(mappedBy = "entreprise")
