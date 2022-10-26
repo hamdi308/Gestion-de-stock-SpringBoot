@@ -13,17 +13,19 @@ public class LigneCommandeClientDto {
     private CommandeClientDto commandeClient;
     private BigDecimal quantite;
     private BigDecimal prixUnitaire;
-    public LigneCommandeClientDto fromEntity(LigneCommandeClient ligneCommandeClient){
+    public static LigneCommandeClientDto fromEntity(LigneCommandeClient ligneCommandeClient){
         if(ligneCommandeClient==null){
             return null;
         }
         return LigneCommandeClientDto.builder()
                 .id(ligneCommandeClient.getId())
+                .article(ArticleDto.fromEntity(ligneCommandeClient.getArticle()))
+                .commandeClient(CommandeClientDto.fromEntity(ligneCommandeClient.getCommandeClient()))
                 .quantite(ligneCommandeClient.getQuantite())
                 .prixUnitaire(ligneCommandeClient.getPrixUnitaire())
                 .build();
     }
-    public LigneCommandeClient toEntity(LigneCommandeClientDto ligneCommandeClientDto) {
+    public static LigneCommandeClient toEntity(LigneCommandeClientDto ligneCommandeClientDto) {
         if (ligneCommandeClientDto == null) {
             return null;
             //throw Exception

@@ -5,6 +5,7 @@ import com.hamdi.gestionStock.model.User;
 import lombok.Builder;
 import lombok.Data;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -19,7 +20,7 @@ public class UserDto {
     private String photo;
     private EntrepriseDto entreprise;
     private List<RolesDto> roles;
-    public UserDto fromEntity(User user){
+    public static UserDto fromEntity(User user){
         if(user==null){
             return null;
         }
@@ -28,11 +29,17 @@ public class UserDto {
                 .name(user.getName())
                 .secondName(user.getSecondName())
                 .email(user.getEmail())
+                .password(user.getPassword())
+                .adresse(AdresseDto.fromEntity(user.getAdresse()))
                 .dateOfBirth(user.getDateOfBirth())
+                .adresse(AdresseDto.fromEntity(user.getAdresse()))
+                .entreprise(EntrepriseDto.fromEntity(user.getEntreprise()))
                 .photo(user.getPhoto())
+                .entreprise(EntrepriseDto.fromEntity(user.getEntreprise()))
+                .roles(user.getRoles() != null?user.getRoles().stream().map(RolesDto::fromEntity).collect(Collectors.toList()) : null)
                 .build();
     }
-    public User toEntity(UserDto userDto) {
+    public static User toEntity(UserDto userDto) {
         if (userDto == null) {
             return null;
             //throw Exception

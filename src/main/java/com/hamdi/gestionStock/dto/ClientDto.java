@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -19,7 +20,7 @@ public class ClientDto {
     private String numTel;
     @JsonIgnore
     private List<CommandeClientDto> commandeClientList;
-    public ClientDto fromEntity(Client client){
+    public static ClientDto fromEntity(Client client){
         if(client==null){
             return null;
         }
@@ -29,10 +30,12 @@ public class ClientDto {
                 .secondname(client.getSecondname())
                 .mail(client.getMail())
                 .numTel(client.getNumTel())
+                .commandeClientList(client.getCommandeClientList() != null?client.getCommandeClientList().stream().map(CommandeClientDto::fromEntity).collect(Collectors.toList()) : null)
+                .adresse(AdresseDto.fromEntity(client.getAdresse()))
                 .photo(client.getPhoto())
                 .build();
     }
-    public Client toEntity(ClientDto clientDto) {
+    public static Client toEntity(ClientDto clientDto) {
         if (clientDto == null) {
             return null;
             //throw Exception

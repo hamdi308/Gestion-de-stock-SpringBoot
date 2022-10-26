@@ -14,7 +14,7 @@ public class CategoryDto {
     private String designation;
     @JsonIgnore
     private List<ArticleDto> articles;
-    public CategoryDto fromEntity(Category category) {
+    public static CategoryDto fromEntity(Category category) {
         if (category == null) {
             return null;
             //throw Exception
@@ -25,7 +25,7 @@ public class CategoryDto {
                 .designation(category.getDesignation())
                 .build();
     }
-    public Category toEntity(CategoryDto categoryDto) {
+    public static Category toEntity(CategoryDto categoryDto) {
         if (categoryDto == null) {
             return null;
             //throw Exception

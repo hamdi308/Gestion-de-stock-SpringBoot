@@ -5,6 +5,7 @@ import com.hamdi.gestionStock.model.Entreprise;
 import lombok.Builder;
 import lombok.Data;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -19,7 +20,7 @@ public class EntrepriseDto {
     private String numTel;
     private String siteWeb;
     private List<UserDto> users;
-    public EntrepriseDto fromEntity(Entreprise entreprise){
+    public static EntrepriseDto fromEntity(Entreprise entreprise){
         if(entreprise==null){
             return null;
         }
@@ -34,7 +35,7 @@ public class EntrepriseDto {
                 .siteWeb(entreprise.getSiteWeb())
                 .build();
     }
-    public Entreprise toEntity(EntrepriseDto entrepriseDto) {
+    public static Entreprise toEntity(EntrepriseDto entrepriseDto) {
         if (entrepriseDto == null) {
             return null;
             //throw Exception

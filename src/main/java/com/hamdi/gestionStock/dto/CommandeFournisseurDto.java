@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import java.time.Instant;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -15,7 +16,7 @@ public class CommandeFournisseurDto {
     private Instant dateCommande;
     private FournisseurDto fournisseur;
     private List<LigneCommandeFournisseurDto> ligneCommandeFournisseur;
-    public CommandeFournisseurDto fromEntity(CommandeFournisseur commandeFournisseur){
+    public static CommandeFournisseurDto fromEntity(CommandeFournisseur commandeFournisseur){
         if(commandeFournisseur==null){
             return null;
         }
@@ -23,9 +24,11 @@ public class CommandeFournisseurDto {
                 .id(commandeFournisseur.getId())
                 .code(commandeFournisseur.getCode())
                 .dateCommande(commandeFournisseur.getDateCommande())
+                .fournisseur(FournisseurDto.fromEntity(commandeFournisseur.getFournisseur()))
+                .ligneCommandeFournisseur(commandeFournisseur.getLigneCommandeFournisseur() != null?commandeFournisseur.getLigneCommandeFournisseur().stream().map(LigneCommandeFournisseurDto::fromEntity).collect(Collectors.toList()) : null)
                 .build();
     }
-    public CommandeFournisseur toEntity(CommandeFournisseurDto commandeFournisseurDto) {
+    public static CommandeFournisseur toEntity(CommandeFournisseurDto commandeFournisseurDto) {
         if (commandeFournisseurDto == null) {
             return null;
             //throw Exception

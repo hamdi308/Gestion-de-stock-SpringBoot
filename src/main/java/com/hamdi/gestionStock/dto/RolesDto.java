@@ -11,16 +11,17 @@ public class RolesDto {
     private Integer id;
     private String roleName;
     private UserDto user;
-    public RolesDto fromEntity(Roles roles){
+    public static RolesDto fromEntity(Roles roles){
         if(roles==null){
             return null;
         }
         return RolesDto.builder()
                 .id(roles.getId())
                 .roleName(roles.getRoleName())
+                .user(UserDto.fromEntity(roles.getUser()))
                 .build();
     }
-    public Roles toEntity(RolesDto rolesDto) {
+    public static Roles toEntity(RolesDto rolesDto) {
         if (rolesDto == null) {
             return null;
             //throw Exception

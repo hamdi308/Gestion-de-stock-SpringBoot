@@ -18,7 +18,7 @@ public class MvtStkDto {
     private BigDecimal quantite;
     private Article article;
     private TypeMvtStk typeMvt;
-    public MvtStkDto fromEntity(MvtStk mvtStk){
+    public static MvtStkDto fromEntity(MvtStk mvtStk){
         if(mvtStk==null){
             return null;
         }
@@ -29,7 +29,7 @@ public class MvtStkDto {
                 .typeMvt(mvtStk.getTypeMvt())
                 .build();
     }
-    public MvtStk toEntity(MvtStkDto mvtStkDto) {
+    public static MvtStk toEntity(MvtStkDto mvtStkDto) {
         if (mvtStkDto == null) {
             return null;
             //throw Exception

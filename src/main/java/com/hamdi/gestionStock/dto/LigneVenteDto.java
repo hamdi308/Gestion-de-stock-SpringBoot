@@ -13,17 +13,18 @@ public class LigneVenteDto {
     private VentesDto vente;
     private BigDecimal quantite;
     private BigDecimal prixUnitaire;
-    public LigneVenteDto fromEntity(LigneVente ligneVente){
+    public static LigneVenteDto fromEntity(LigneVente ligneVente){
         if(ligneVente==null){
             return null;
         }
         return LigneVenteDto.builder()
                 .id(ligneVente.getId())
+                .vente(VentesDto.fromEntity(ligneVente.getVente()))
                 .quantite(ligneVente.getQuantite())
                 .prixUnitaire(ligneVente.getPrixUnitaire())
                 .build();
     }
-    public LigneVente toEntity(LigneVenteDto ligneVenteDto) {
+    public static LigneVente toEntity(LigneVenteDto ligneVenteDto) {
         if (ligneVenteDto == null) {
             return null;
             //throw Exception

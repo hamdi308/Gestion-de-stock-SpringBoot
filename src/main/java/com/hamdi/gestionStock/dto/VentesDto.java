@@ -12,7 +12,7 @@ public class VentesDto {
     private String code;
     private Instant dateVente;
     private String commentaire;
-    public VentesDto fromEntity(Ventes ventes){
+    public static VentesDto fromEntity(Ventes ventes){
         if(ventes==null){
             return null;
         }
@@ -23,7 +23,7 @@ public class VentesDto {
                 .commentaire(ventes.getCommentaire())
                 .build();
     }
-    public Ventes toEntity(VentesDto ventesDto) {
+    public static Ventes toEntity(VentesDto ventesDto) {
         if (ventesDto == null) {
             return null;
             //throw Exception

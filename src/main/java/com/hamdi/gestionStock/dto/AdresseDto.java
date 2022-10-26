@@ -16,7 +16,7 @@ public class AdresseDto {
     private String ville;
     private String codePostal;
     private String pays;
-    public AdresseDto fromEntity(Adresse adresse){
+    public static AdresseDto fromEntity(Adresse adresse){
        if(adresse==null){
            return null;
        }
@@ -28,7 +28,7 @@ public class AdresseDto {
                .pays(adresse.getPays())
                .build();
     }
-    public Adresse toEntity(AdresseDto adresseDto) {
+    public static Adresse toEntity(AdresseDto adresseDto) {
         if (adresseDto == null) {
             return null;
             //throw Exception

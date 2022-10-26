@@ -5,6 +5,7 @@ import com.hamdi.gestionStock.model.Fournisseur;
 import lombok.Builder;
 import lombok.Data;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -17,7 +18,7 @@ public class FournisseurDto {
     private AdresseDto adresse;
     private String numTel;
     private List<CommandeFournisseurDto> commandeFournisseurs;
-    public FournisseurDto fromEntity(Fournisseur fournisseur){
+    public static FournisseurDto fromEntity(Fournisseur fournisseur){
         if(fournisseur==null){
             return null;
         }
@@ -28,9 +29,11 @@ public class FournisseurDto {
                 .photo(fournisseur.getPhoto())
                 .mail(fournisseur.getMail())
                 .numTel(fournisseur.getNumTel())
+                .commandeFournisseurs(fournisseur.getCommandeFournisseurs() != null?fournisseur.getCommandeFournisseurs().stream().map(CommandeFournisseurDto::fromEntity).collect(Collectors.toList()) : null)
+                .adresse(AdresseDto.fromEntity(fournisseur.getAdresse()))
                 .build();
     }
-    public Fournisseur toEntity(FournisseurDto fournisseurDto) {
+    public static Fournisseur toEntity(FournisseurDto fournisseurDto) {
         if (fournisseurDto == null) {
             return null;
             //throw Exception
